@@ -43,7 +43,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   $nameValid = strlen($name) >= 2 && preg_match('/^[a-z]{3,}$/i', $name);
   $emailValid = preg_match("/\b[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}\b/i", $email);
   $usernameValid = strlen($username) >= 5;
-  $passwordValid = strlen($password) >= 8;
+  $passwordValid = preg_match('/^.*(?=.{6,10})(?=.*[a-z]{1,})(?=(?:[^A-Z]*[A-Z]){3})(?=.*\d).*$/', $password);
   $confirmPasswordValid = $password == $confirmPassword;
   $dobValid = true;
   $ccExpiryValid = true;
